@@ -13,6 +13,7 @@ var NUM_SECONDS = 35;
 function GodotBot() {
   this.attacking = {};
   this.threadLookup = {};
+  this.startedAt = {};
   this.attackingTimer = null;
   var self = this;
 
@@ -42,15 +43,19 @@ function GodotBot() {
 
   this.startListening = function() {
     self.api.listen((err, message) => {
-
       console.log('listening ~ ', err, message);
-
       if (message && 'threadID' in message) {
         if ('reader' in message) {
-          self.threadLookup[attackingThread] = message['reader'];
+          self.threadLookup[attackingThread] = {
+            userID: message['reader'],
+            start: new Date().getTime(),
+          };
         }
         if ('senderID' in message) {
-          self.threadLookup[attackingThread] = message['senderID'];
+          self.threadLookup[attackingThread] = {
+            userID: message['senderID'],
+            start: new Date().getTime(),
+          }
         }
         var attackingThread = message.threadID;
         if (attackingThread in self.attacking) {
