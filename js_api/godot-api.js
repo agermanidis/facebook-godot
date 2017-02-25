@@ -19,10 +19,10 @@ function GodotBot() {
 
 
   this.getFriendsList = function(cb) {
-    // if (self.friendsList) {
-    //   cb(null, self.friendsList);
-    //   return;
-    // }
+    if (self.friendsList) {
+      cb(null, self.friendsList);
+      return;
+    }
     self.api.getFriendsList((err, friends) => {
       if (err) {
         cb(err);
@@ -38,7 +38,9 @@ function GodotBot() {
   };
 
   this.getActiveUsers = function() {
-    return Object.keys(this.threadLookup).map((key) => this.threadLookup[key]);
+    var activeUsers = Object.keys(this.threadLookup).map((key) => this.threadLookup[key]);
+    activeUsers.sort((a, b) => a.start < b.start);
+    return activeUsers;
   }
 
   this.startListening = function() {
