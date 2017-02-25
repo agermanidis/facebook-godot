@@ -10,8 +10,7 @@ var login = require('facebook-chat-api');
 
 var NUM_SECONDS = 35;
 
-function GodotBot(email, password) {
-  this.loginInfo = {email: email, password: password};
+function GodotBot() {
   this.attacking = {};
   this.threadLookup = {};
   this.attackingTimer = null;
@@ -97,8 +96,20 @@ function GodotBot(email, password) {
     clearInterval(this.attackingTimer);
   }
 
-  this.start = (cb) => {
-    login(this.loginInfo, (err, api) => {
+  this.loginUser = (email, password, cb) => {
+    login({email: email, password: password}, (err, api) => {
+      if (err) {
+        console.error(err);
+        cb(err);
+        return;
+      }
+      self.api = api;
+      cb(null, api);
+    })
+  }
+
+  this.start = (email, password, cb) => {
+    login({email: email, password: password}, (err, api) => {
       if (err) {
         console.error(err);
         cb && cb(err);
