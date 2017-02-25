@@ -2,6 +2,9 @@
 // var botAPI = new bot('codejoust@gmail.com', 'iainnash');
 // botAPI.start()
 
+// can only call getFriendsList after calling .start();
+// if you don't want the listener to start right away, call login() first.
+
 
 var login = require('facebook-chat-api');
 
@@ -94,32 +97,20 @@ function GodotBot(email, password) {
     clearInterval(this.attackingTimer);
   }
 
-  this.login = (cb) => {
-    console.log('logged in', this.login);
+  this.start = (cb) => {
     login(this.loginInfo, (err, api) => {
       if (err) {
+        console.error(err);
         cb && cb(err);
         return;
       }
       self.api = api;
-      cb && cb(null, api);
+      self.startSendingTyping();
+      self.startListening();
+      console.log('started ~~ ');
+      cb && cb(null, self.api);
     });
   }
-
-  this.start = (cb) => {
-    if (!this.api) {
-      this.login((e, s) => {
-        if (s) {
-          this.start(cb);
-        }
-      })
-    }
-    self.startSendingTyping();
-    self.startListening();
-    console.log('started ~~ ');
-    cb && cb(null, self.api);
-  }
-
 }
 
 module.exports = GodotBot;
