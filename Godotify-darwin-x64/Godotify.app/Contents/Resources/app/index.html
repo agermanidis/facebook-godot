@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Facebook Godot</title>
+  </head>
+  <body>
+    <img id="headimg" src="typing.gif"></img>
+    <h1>Godotify</h1>
+    <div id="login-screen">
+      <p class="login-prompt">Enter your Facebook credentials to begin.</p>
+
+
+      <form id="login-form">
+        <div class="login-option">
+          <p>Email or phone</p>
+          <input id="email-input" id="email-input"></input>
+        </div>
+        
+        <div class="login-option">
+          <p>Password</p>
+          <input type="password" id="password-input"></input>
+        </div>
+      
+        <input type="submit" value="Make them wait" id="login-button" />
+      </form>
+    </div>
+    
+    <div id="main-screen">
+      <h4>Friends waiting</h4>
+      <div id="friends">
+      </div>
+    </div>
+    <script src="index.js"></script>
+
+    <div id="loading-screen">
+      <img src="loader.gif"></img>
+    </div>
+  </body>
+</html>

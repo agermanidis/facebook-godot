@@ -1,0 +1,77 @@
+body {
+    text-align: center;
+    font-family: Verdana;
+    margin: 0;
+}
+
+#headimg {
+    width: 400px;
+    margin-top: -20px;
+    margin-bottom: -50px;
+}
+
+h1 {
+    font-family: "Avenir Next";
+    font-size: 50px;
+}
+
+h4 {
+    font-size: 18px;
+    margin-top: 30px;
+    color: #484747;
+}
+
+.friend {
+    margin: 10px;
+}
+
+.friend-avi {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background: grey;
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+    top: 10px;
+}
+
+.friend-name {
+    font-size: 15px;
+}
+
+.friend-time {
+    color: darkgray;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+#login-button {
+    margin: 40px;
+    font-size: 20px;
+    border: none;
+    padding: 10px 20px;
+    background: none;
+    border: 1px solid black;
+}
+
+.login-option  {
+    color: gray;
+}
+
+.login-prompt {
+    margin-bottom: 30px;
+}
+
+.login-option input {
+    font-size: 20px;
+}
+
+#main-screen, #loading-screen {
+    display: none;
+}
+
+#empty-state {
+    color: lightgrey;
+}
+
