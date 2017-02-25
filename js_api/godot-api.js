@@ -47,6 +47,7 @@ function GodotBot() {
     self.api.listen((err, message) => {
       console.log('listening ~ ', err, message);
       if (message && 'threadID' in message) {
+        var attackingThread = message.threadID;
         if ('reader' in message) {
           self.threadLookup[attackingThread] = {
             userID: message['reader'],
@@ -59,7 +60,6 @@ function GodotBot() {
             start: new Date().getTime(),
           }
         }
-        var attackingThread = message.threadID;
         if (attackingThread in self.attacking) {
           console.log('already attacking user. skipping');
           return;
