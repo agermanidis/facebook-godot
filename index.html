@@ -3,7 +3,7 @@
 body {font-family: helvetica neue, helvetica; }
 .footer {
 text-align: center;
-margin-top: 20%;
+margin-top: 50px;
 }
 .footer a {
 color: grey;
@@ -11,21 +11,33 @@ color: grey;
 .footer a:not(:last-child)::after { 
   content: ' / ';
 }
+center {
+  font-family: Helvetica;
+  font-size: 25px;
+  margin-top: 5px;
+}
 </style>
 </head>
-<body><center><img style="max-width: 500px;" src="./godotify-preview.png"></center>
-
-<center><a href="/facebook-godot/Godotify.zip" style="
-    font-family: Helvetica;
-    font-size: 30px;
-">Make everyone who messages you wait... forever.</a></center>
+<body><center><img style="max-width: 400px;" src="./godotify-preview.png"></center>
+  <center>Make everyone who messages you wait... forever.</center>
+  <br/>
+  <center><a class="dl-link" href="/facebook-godot/Godotify.zip">Download for OS X</a></center>
 <br />
-<p class="footer"><a href="http://github.com/iainnash/">@iainnash</a> / <a href="http://github.com/agermanidis/">@agermanidis</a></p> 
+<p class="footer"></p>
 <script type="credits">
   @iainnash
   @agermanidis
 </script>
 <script>
+function shuffle(a) {
+  var j, x, i;
+  for (i = a.length; i; i--) {
+    j = Math.floor(Math.random() * i);
+    x = a[i - 1];
+    a[i - 1] = a[j];
+    a[j] = x;
+  }
+}
 var users = [];
 document.querySelectorAll('script[type=credits]')[0].innerHTML.match(/@([A-Za-z]+)/g).map(function(match){
   var link = document.createElement('a');
@@ -36,7 +48,7 @@ document.querySelectorAll('script[type=credits]')[0].innerHTML.match(/@([A-Za-z]
 });
 function writeCredits() {
   document.querySelectorAll('.footer')[0].innerHTML = '';
-  users.sort(function(a, b) { return Math.random() >= 0.5; });
+  shuffle(users);
   users.forEach(function(user) {
     document.querySelectorAll('.footer')[0].appendChild(user);
   });
