@@ -2,6 +2,8 @@ const moment = require('moment');
 const remote = require('electron').remote;
 const $ = require('./jquery.min');
 
+var seen = {};
+
 moment.updateLocale('en', {
     relativeTime : {
         future: "in %s",
@@ -22,7 +24,6 @@ moment.updateLocale('en', {
 
 function getActiveUsers(cb) {
     return remote.getGlobal('getActiveUsers')(function(ret){
-        
         cb(ret);
     });
 }
@@ -35,6 +36,11 @@ function refresh() {
         }
         for (var i = 0; i < users.length; i++ ){
             var user = users[i];
+            if (!(user.name in seen)) {
+                new Notification("Godotify", {body: user.name + " started waiting"});
+                seen[user.name] = true;
+            } 
+                
             var el = $("<div class='friend'>");
             var friendAviEl = $("<img class=\"friend-avi\">");
             friendAviEl.attr('src', user.profilePicture);

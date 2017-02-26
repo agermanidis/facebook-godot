@@ -58,11 +58,6 @@ function createWindow () {
         slashes: true
     }))
 
-    var friends = {
-        153: "5 seconds"
-    };
-    //ipc.send('updateFriends', friends);
-
     //mainWindow.webContents.openDevTools()
 
     // Emitted when the window is closed.
