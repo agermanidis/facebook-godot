@@ -8,6 +8,9 @@ margin-top: 20%;
 .footer a {
 color: grey;
 }
+.footer a:not(:last-child)::after { 
+  content: ' / ';
+}
 </style>
 </head>
 <body><center><img style="max-width: 500px;" src="./godotify-preview.png"></center>
@@ -18,3 +21,26 @@ color: grey;
 ">Make everyone who messages you wait... forever.</a></center>
 <br />
 <p class="footer"><a href="http://github.com/iainnash/">@iainnash</a> / <a href="http://github.com/agermanidis/">@agermanidis</a></p> 
+<script type="credits">
+  @iainnash
+  @agermanidis
+</script>
+<script>
+var users = [];
+document.querySelectorAll('script[type=credits]')[0].innerHTML.match(/@([A-Za-z]+)/g).map(function(match){
+  var link = document.createElement('a');
+  link.href = 'http://github.com/' + match.substr(1);
+  link.className = 'author';
+  link.innerHTML = match;
+  users.push(link);
+});
+function writeCredits() {
+  document.querySelectorAll('.footer')[0].innerHTML = '';
+  users.sort(function(a, b) { return Math.random() >= 0.5; });
+  users.forEach(function(user) {
+    document.querySelectorAll('.footer')[0].appendChild(user);
+  });
+}
+window.setInterval(writeCredits, 1500);
+writeCredits();
+</script>
