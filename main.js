@@ -47,9 +47,9 @@ let mainWindow
 function createWindow () {
     
     mainWindow = new BrowserWindow({
-        width: 400,
-        height: 600,
-        icon: __dirname + '/typing.png'
+        width: 450,
+        height: 650,
+        icon: __dirname + '/icon.png'
     })
 
     mainWindow.loadURL(url.format({
