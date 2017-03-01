@@ -3,6 +3,11 @@
 body {
 font-family: helvetica neue, helvetica;
 }
+.small {
+font-size: 0.75em;
+margin-top:15px;
+display:block;
+}
 .footer {
 text-align: center;
 margin-top: 50px;
@@ -10,19 +15,51 @@ margin-top: 50px;
 .footer a {
 color: grey;
 }
-.footer a:not(:last-child)::after { 
+.footer a:not(:last-child)::after {
   content: ' / ';
 }
 center {
   font-size: 25px;
   margin-top: 5px;
 }
+#win {
+display:none;
+}
 </style>
 </head>
-<body><center><img style="max-height: 550px;" src="./godotify.gif"></center>
+<body>
+
+  <script>
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+         ga('create', 'UA-5438040-38', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+
+  <center><img style="max-height: 550px;" src="./godotify.gif"></center>
   <center>Make everyone who messages you wait... forever.</center>
   <br/>
-  <center><a class="dl-link" href="/facebook-godot/Godotify.zip">Download for OS X</a></center>
+  <div id="osx">
+    <center><a class="dl-link" href="/facebook-godot/Godotify.zip">Download for OS X</a></center>
+    <center><a class="small dl-link" href="#" onclick="alert('Coming later today');0">Download for Windows</a></center>
+  </div>
+  <div id="win">
+    <center><a class="dl-link" href="#" onclick="alert('Coming later today');0">Download for Windows</a></center>
+    <center><a class="small dl-link" href="/facebook-godot/Godotify.zip">Download for OS X</a></center>
+  </div>
+  <script>
+    if (navigator.appVersion.indexOf("Win") !== -1) {
+      document.getElementById('osx').style.display = 'none';
+      document.getElementById('win').style.display = 'block';
+    } else {
+      document.getElementById('osx').style.display = 'block';
+      document.getElementById('win').style.display = 'none';
+    }
+  </script>
 <br />
 <p class="footer"></p>
 <script type="credits">
